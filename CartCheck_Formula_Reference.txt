@@ -1,0 +1,184 @@
+CartCheck Formula Reference
+Prathamesh Prabhakar Bodhale | UID 25MCI10270
+
+These are formulas read from the delivered workbook. The workbook is the complete source.
+Orders formulas repeat down rows 8 to 107. Data Quality record formulas repeat down rows 21 to 120.
+Use the formula bar or Formulas > Show Formulas in Excel to inspect every row.
+
+Dashboard
+=========
+B6  ='Analysis'!I16
+F6  ='Analysis'!I15
+J6  ='Analysis'!I14
+B10  ='Analysis'!I7
+F10  ='Analysis'!C24
+J10  ='Analysis'!I13
+
+Fee Planner
+===========
+G8  =SUM(C10:C13)
+G9  =C8-C9+G8
+G10  =C9-G8
+G11  =IFERROR(G10/C8,"n.a.")
+G13  =G8+C15
+G14  =MAX(0,G13-C9)
+G16  =IF(G10>0,"Positive",IF(G10<0,"Negative","Break-even"))
+G17  =IF(AND(COUNT(C8:C13)=6,C8>0,MIN(C9:C13)>=0,ISNUMBER(C15),C15>=0),"Valid","Review input")
+
+Analysis
+========
+C7  =COUNTIF('Orders'!$L$8:$L$107,B7)
+D7  =AVERAGEIF('Orders'!$L$8:$L$107,B7,'Orders'!$M$8:$M$107)
+E7  =AVERAGEIF('Orders'!$L$8:$L$107,B7,'Orders'!$G$8:$G$107)
+F7  =E7-D7
+I7  =AVERAGE('Orders'!$M$8:$M$107)
+C8  =COUNTIF('Orders'!$L$8:$L$107,B8)
+D8  =AVERAGEIF('Orders'!$L$8:$L$107,B8,'Orders'!$M$8:$M$107)
+E8  =AVERAGEIF('Orders'!$L$8:$L$107,B8,'Orders'!$G$8:$G$107)
+F8  =E8-D8
+I8  =MEDIAN('Orders'!$M$8:$M$107)
+C9  =COUNTIF('Orders'!$L$8:$L$107,B9)
+D9  =AVERAGEIF('Orders'!$L$8:$L$107,B9,'Orders'!$M$8:$M$107)
+E9  =AVERAGEIF('Orders'!$L$8:$L$107,B9,'Orders'!$G$8:$G$107)
+F9  =E9-D9
+I9  =INDEX(H30:H40,MATCH(MAX(I30:I40),I30:I40,0))
+I10  =QUARTILE('Orders'!$M$8:$M$107,1)
+I11  =QUARTILE('Orders'!$M$8:$M$107,3)
+I12  =I11+1.5*(I11-I10)
+I13  =COUNTIF('Orders'!$T$8:$T$107,"High fee")
+C14  =COUNTIF('Orders'!$R$8:$R$107,B14)
+D14  =SUMIF('Orders'!$R$8:$R$107,B14,'Orders'!$F$8:$F$107)
+E14  =SUMIF('Orders'!$R$8:$R$107,B14,'Orders'!$M$8:$M$107)
+F14  =SUMIF('Orders'!$R$8:$R$107,B14,'Orders'!$N$8:$N$107)
+I14  =SUM('Orders'!$O$8:$O$107)
+C15  =COUNTIF('Orders'!$R$8:$R$107,B15)
+D15  =SUMIF('Orders'!$R$8:$R$107,B15,'Orders'!$F$8:$F$107)
+E15  =SUMIF('Orders'!$R$8:$R$107,B15,'Orders'!$M$8:$M$107)
+F15  =SUMIF('Orders'!$R$8:$R$107,B15,'Orders'!$N$8:$N$107)
+I15  =SUM('Orders'!$N$8:$N$107)
+C16  =COUNTIF('Orders'!$R$8:$R$107,B16)
+D16  =SUMIF('Orders'!$R$8:$R$107,B16,'Orders'!$F$8:$F$107)
+E16  =SUMIF('Orders'!$R$8:$R$107,B16,'Orders'!$M$8:$M$107)
+F16  =SUMIF('Orders'!$R$8:$R$107,B16,'Orders'!$N$8:$N$107)
+I16  =COUNTA('Orders'!$A$8:$A$107)
+C17  =COUNTIF('Orders'!$R$8:$R$107,B17)
+D17  =SUMIF('Orders'!$R$8:$R$107,B17,'Orders'!$F$8:$F$107)
+E17  =SUMIF('Orders'!$R$8:$R$107,B17,'Orders'!$M$8:$M$107)
+F17  =SUMIF('Orders'!$R$8:$R$107,B17,'Orders'!$N$8:$N$107)
+I17  =IF(I20=0,"n.a.",I21/I20)
+I18  =I21/SUM('Orders'!$F$8:$F$107)
+I19  =I14/SUM('Orders'!$F$8:$F$107)
+I20  =SUM('Orders'!$G$8:$G$107)
+I21  =SUM('Orders'!$M$8:$M$107)
+C22  =COUNTIF('Orders'!$S$8:$S$107,B22)
+D22  =C22/$I$16
+I22  =COUNTIF('Orders'!$G$8:$G$107,0)
+C23  =COUNTIF('Orders'!$S$8:$S$107,B23)
+D23  =C23/$I$16
+I23  =C24
+C24  =COUNTIF('Orders'!$S$8:$S$107,B24)
+D24  =C24/$I$16
+I26  =SUM(FoodSubtotal)
+I30  =COUNTIF('Orders'!$H$8:$H$107,H30)
+I31  =COUNTIF('Orders'!$H$8:$H$107,H31)
+I32  =COUNTIF('Orders'!$H$8:$H$107,H32)
+I33  =COUNTIF('Orders'!$H$8:$H$107,H33)
+I34  =COUNTIF('Orders'!$H$8:$H$107,H34)
+I35  =COUNTIF('Orders'!$H$8:$H$107,H35)
+I36  =COUNTIF('Orders'!$H$8:$H$107,H36)
+I37  =COUNTIF('Orders'!$H$8:$H$107,H37)
+I38  =COUNTIF('Orders'!$H$8:$H$107,H38)
+I39  =COUNTIF('Orders'!$H$8:$H$107,H39)
+I40  =COUNTIF('Orders'!$H$8:$H$107,H40)
+I45  =SUM('Orders'!$H$8:$H$107)
+J45  =I45/$I$21
+I46  =SUM('Orders'!$I$8:$I$107)
+J46  =I46/$I$21
+I47  =SUM('Orders'!$J$8:$J$107)
+J47  =I47/$I$21
+I48  =SUM('Orders'!$K$8:$K$107)
+J48  =I48/$I$21
+I54  =COUNTIFS('Orders'!$M$8:$M$107,">=0",'Orders'!$M$8:$M$107,"<50")
+J54  =I54/$I$16
+I55  =COUNTIFS('Orders'!$M$8:$M$107,">=50",'Orders'!$M$8:$M$107,"<75")
+J55  =I55/$I$16
+I56  =COUNTIFS('Orders'!$M$8:$M$107,">=75",'Orders'!$M$8:$M$107,"<100")
+J56  =I56/$I$16
+I57  =COUNTIFS('Orders'!$M$8:$M$107,">=100",'Orders'!$M$8:$M$107,"<150")
+J57  =I57/$I$16
+I58  =COUNTIFS('Orders'!$M$8:$M$107,">=150")
+J58  =I58/$I$16
+I59  =SUM(I54:I58)
+J59  =SUM(J54:J58)
+H66  =INDEX('Orders'!$A$8:$A$107,MATCH(I66,'Orders'!$M$8:$M$107,0))
+I66  =LARGE('Orders'!$M$8:$M$107,1)
+J66  =IF(I66>$I$12,"High fee","Within range")
+H67  =INDEX('Orders'!$A$8:$A$107,MATCH(I67,'Orders'!$M$8:$M$107,0))
+I67  =LARGE('Orders'!$M$8:$M$107,2)
+J67  =IF(I67>$I$12,"High fee","Within range")
+B68  =B14
+C68  =SUMIF('Orders'!$R$8:$R$107,B68,'Orders'!$G$8:$G$107)
+D68  =SUMIF('Orders'!$R$8:$R$107,B68,'Orders'!$O$8:$O$107)
+H68  =INDEX('Orders'!$A$8:$A$107,MATCH(I68,'Orders'!$M$8:$M$107,0))
+I68  =LARGE('Orders'!$M$8:$M$107,3)
+J68  =IF(I68>$I$12,"High fee","Within range")
+B69  =B15
+C69  =SUMIF('Orders'!$R$8:$R$107,B69,'Orders'!$G$8:$G$107)
+D69  =SUMIF('Orders'!$R$8:$R$107,B69,'Orders'!$O$8:$O$107)
+H69  =INDEX('Orders'!$A$8:$A$107,MATCH(I69,'Orders'!$M$8:$M$107,0))
+I69  =LARGE('Orders'!$M$8:$M$107,4)
+J69  =IF(I69>$I$12,"High fee","Within range")
+B70  =B16
+C70  =SUMIF('Orders'!$R$8:$R$107,B70,'Orders'!$G$8:$G$107)
+D70  =SUMIF('Orders'!$R$8:$R$107,B70,'Orders'!$O$8:$O$107)
+H70  =INDEX('Orders'!$A$8:$A$107,MATCH(I70,'Orders'!$M$8:$M$107,0))
+I70  =LARGE('Orders'!$M$8:$M$107,5)
+J70  =IF(I70>$I$12,"High fee","Within range")
+B71  =B17
+C71  =SUMIF('Orders'!$R$8:$R$107,B71,'Orders'!$G$8:$G$107)
+D71  =SUMIF('Orders'!$R$8:$R$107,B71,'Orders'!$O$8:$O$107)
+
+Orders
+======
+L8  =VLOOKUP(C8,$W$8:$X$10,2,FALSE)
+M8  =SUM(H8:K8)
+N8  =F8-G8+M8
+O8  =G8-M8
+P8  =IFERROR(O8/F8,"n.a.")
+Q8  =IFERROR(G8/F8,"n.a.")
+R8  =TEXT(B8,"mmm yyyy")
+S8  =IF(O8>0,"Positive",IF(O8<0,"Negative","Break-even"))
+T8  =IF(M8>'Analysis'!$I$12,"High fee","Within range")
+U8  =IF(AND(COUNTA(A8:K8)=11,COUNT(F8:K8)=6,F8>0,MIN(G8:K8)>=0),"Valid","Review input")
+V8  =IF(OR(O8<0,T8="High fee"),"Review charges","Within checks")
+
+Data Quality
+============
+C6  =COUNTBLANK('Orders'!A8:K107)
+D6  =IF(C6=0,"OK","Review")
+C7  =COUNTIF(C21:C120,">1")
+D7  =IF(C7=0,"OK","Review")
+C8  =COUNTIF(D21:D120,"Unmapped")
+D8  =IF(C8=0,"OK","Review")
+C9  =COUNTIF(E21:E120,"Review input")
+D9  =IF(C9=0,"OK","Review")
+C10  =COUNTIF(F21:F120,"Review")
+D10  =IF(C10=0,"OK","Review")
+C11  ='Analysis'!I15-(SUM('Orders'!F8:F107)-SUM('Orders'!G8:G107)+SUM('Orders'!M8:M107))
+D11  =IF(C11=0,"OK","Review")
+C12  =SUM('Analysis'!C22:C24)-'Analysis'!I16
+D12  =IF(C12=0,"OK","Review")
+C13  =SUM('Analysis'!I54:I58)-'Analysis'!I16
+D13  =IF(C13=0,"OK","Review")
+C14  =SUM('Analysis'!I30:I40)-'Analysis'!I16
+D14  =IF(C14=0,"OK","Review")
+B21  ='Orders'!A8
+C21  =COUNTIF('Orders'!$A$8:$A$107,B21)
+D21  =IF(COUNTIF('Orders'!$W$8:$W$10,'Orders'!C8)=1,"Mapped","Unmapped")
+E21  ='Orders'!U8
+F21  =IF(AND(ISNUMBER('Orders'!B8),'Orders'!B8>=DATE(2026,7,1),'Orders'!B8<DATE(2026,11,1)),"In period","Review")
+G21  =IF(NOT(AND(C21=1,D21="Mapped",E21="Valid",F21="In period")),"Review","OK")
+
+Project Guide
+=============
+B81  =CONCATENATE('Orders'!A8," / ",'Orders'!L8," / ",'Orders'!D8)
